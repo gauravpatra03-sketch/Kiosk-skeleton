@@ -189,3 +189,16 @@ input:focus-visible {
   font-weight: 600;
   margin: 0 0 22px;
 }
+
+/* ----------------------------------------------------------------
+   Printing — only the queue receipt is printed; everything else hides.
+   ---------------------------------------------------------------- */
+@media print {
+  body { background: #fff; }
+  .kiosk-header,
+  .kiosk-nav,
+  .btn-home,
+  .kiosk-main .kiosk-card { display: none !important; }
+  .kiosk-screen { min-height: auto; padding: 0; }
+  .kiosk-main { padding: 0; }
+}

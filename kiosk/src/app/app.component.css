@@ -4,6 +4,7 @@
   justify-content: space-between;
   gap: 24px;
   padding: 18px 40px;
+  flex-wrap: wrap;
 }
 
 .brand {
@@ -46,6 +47,90 @@
 }
 .btn-home:hover {
   background: rgba(255, 255, 255, 0.08);
+}
+
+/* ------------------------------------------------------------------
+   Navbar: journey progress + language toggle + staff help
+   ------------------------------------------------------------------ */
+.kiosk-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* Journey progress dots with icons. */
+.step-progress {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.step {
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 1;
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid #6aa0aa;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.step-done {
+  border-color: var(--amber);
+  color: var(--white);
+  background: rgba(255, 183, 3, 0.22);
+}
+
+.step-active {
+  border-color: var(--amber);
+  background: var(--amber);
+  color: var(--ink);
+  box-shadow: 0 0 0 4px rgba(255, 183, 3, 0.35);
+}
+
+/* EN / हिं language toggle. */
+.lang-toggle {
+  display: inline-flex;
+  border: 2px solid #6aa0aa;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.lang-btn {
+  padding: 8px 18px;
+  font-size: var(--big);
+  font-weight: 700;
+  background: transparent;
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  min-height: 56px;
+}
+
+.lang-active {
+  background: var(--amber);
+  color: var(--ink);
+}
+
+/* Informational "staff can help" chip. */
+.help-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 19px;
+  font-weight: 600;
+  color: #eaf2f5;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--amber-dark);
+  border-radius: 40px;
+  padding: 10px 20px;
+  white-space: nowrap;
 }
 
 .kiosk-main {

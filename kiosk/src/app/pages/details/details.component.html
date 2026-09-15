@@ -1,26 +1,26 @@
 <div class="kiosk-screen">
   <div class="kiosk-card">
-    <button type="button" class="btn-big btn-back btn-back-top" (click)="back()">← Back</button>
+    <button type="button" class="btn-big btn-back btn-back-top" (click)="back()">← {{ 'common.back' | translate }}</button>
 
-    <h1 class="kiosk-title">Your details</h1>
-    <p class="kiosk-sub">Please enter your name and mobile number below.</p>
+    <h1 class="kiosk-title">{{ 'details.title' | translate }}</h1>
+    <p class="kiosk-sub">{{ 'details.subtitle' | translate }}</p>
 
     <form (ngSubmit)="next()">
       <div class="field">
-        <label for="name">Your full name</label>
+        <label for="name">{{ 'details.nameLabel' | translate }}</label>
         <input
           id="name"
           name="name"
           type="text"
           [(ngModel)]="name"
           autocomplete="name"
-          placeholder="Type your name here"
+          [placeholder]="'details.namePh' | translate"
           required
         />
       </div>
 
       <div class="field">
-        <label for="phone">Mobile number (10 digits)</label>
+        <label for="phone">{{ 'details.phoneLabel' | translate }}</label>
         <input
           id="phone"
           name="phone"
@@ -29,17 +29,17 @@
           [(ngModel)]="phone"
           (input)="onPhoneInput()"
           autocomplete="tel"
-          placeholder="e.g. 9876543210"
+          [placeholder]="'details.phonePh' | translate"
           maxlength="10"
           required
         />
       </div>
 
       <p *ngIf="hasInputError()" class="form-error">
-        Please enter your name and a 10-digit mobile number.
+        {{ 'details.error' | translate }}
       </p>
 
-      <button type="submit" class="btn-big btn-primary btn-submit">Next →</button>
+      <button type="submit" class="btn-big btn-primary btn-submit">{{ 'common.next' | translate }} →</button>
     </form>
   </div>
 </div>

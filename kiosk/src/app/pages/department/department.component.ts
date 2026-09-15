@@ -16,7 +16,7 @@ export class DepartmentComponent {
 
   choose(department: Department): void {
     this.kiosk.selectedDepartment = department;
-    this.router.navigate(['/queue']);
+    this.router.navigate(['/documents']);
   }
 
   back(): void {

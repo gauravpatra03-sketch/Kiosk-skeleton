@@ -5,12 +5,14 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { DepartmentComponent } from './pages/department/department.component';
 import { QueueComponent } from './pages/queue/queue.component';
+import { UploadDocumentsComponent } from './pages/documents/upload-documents.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: 'welcome', component: WelcomeComponent },
   { path: 'details', component: DetailsComponent },
   { path: 'department', component: DepartmentComponent },
+  { path: 'documents', component: UploadDocumentsComponent },
   { path: 'queue', component: QueueComponent },
   { path: '**', redirectTo: 'welcome' },
 ];

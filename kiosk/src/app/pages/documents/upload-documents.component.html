@@ -1,0 +1,103 @@
+<div class="kiosk-screen">
+  <!-- Friendly message when the session was lost (refresh / direct visit) -->
+  <div *ngIf="needsRestart" class="kiosk-card">
+    <div class="doc-restart-ico" aria-hidden="true">⏱️</div>
+    <h1 class="kiosk-title">{{ 'session.title' | translate }}</h1>
+    <p class="kiosk-sub">
+      {{ 'session.subtitle' | translate }}
+    </p>
+    <button type="button" class="btn-big btn-primary btn-doc-restart" (click)="startOver()">
+      {{ 'session.startOver' | translate }} →
+    </button>
+  </div>
+
+  <!-- Normal upload screen -->
+  <div *ngIf="!needsRestart" class="kiosk-card">
+    <button type="button" class="btn-big btn-back btn-back-top" (click)="back()">← {{ 'common.back' | translate }}</button>
+
+    <h1 class="kiosk-title">{{ 'documents.title' | translate }}</h1>
+    <p class="kiosk-sub">
+      {{ 'documents.subtitle' | translate }}
+    </p>
+
+    <div *ngIf="totalAttached > 0" class="doc-counter" role="status">
+      <span class="doc-counter-count">{{ totalAttached }}</span>
+      <span>{{ totalAttached === 1 ? ('documents.fileAttached' | translate) : ('documents.filesAttached' | translate) }}</span>
+    </div>
+
+    <div class="doc-grid">
+      <div class="doc-bucket" *ngFor="let slot of slots">
+        <div class="doc-head">
+          <span class="doc-icon" aria-hidden="true">{{ slot.icon }}</span>
+          <span class="doc-label">{{ ('documents.slot.' + slot.key + '.label') | translate }}</span>
+        </div>
+
+        <div
+          class="doc-drop"
+          [class.doc-drop-filled]="hasFile(slot.type)"
+          (dragover)="onDragOver($event)"
+          (drop)="onDrop(slot.type, $event)"
+        >
+          <ng-container *ngIf="hasFile(slot.type); else emptyState">
+            <span class="doc-check">✓ {{ 'documents.attached' | translate }}</span>
+          </ng-container>
+          <ng-template #emptyState>
+            <span class="doc-drag">{{ 'documents.dropDrag' | translate }} <em>{{ ('documents.slot.' + slot.key + '.hint') | translate }}</em></span>
+          </ng-template>
+        </div>
+
+        <div class="doc-actions">
+          <button
+            type="button"
+            class="btn-big btn-choose"
+            (click)="picker.click()"
+          >{{ hasFile(slot.type) ? ('documents.addMore' | translate) : ('documents.chooseFile' | translate) }}</button>
+          <p class="doc-or">{{ 'documents.orTap' | translate }}</p>
+          <input
+            #picker
+            class="doc-picker"
+            type="file"
+            hidden
+            (change)="onFileChosen(slot.type, $event)"
+          />
+        </div>
+
+        <ul class="doc-files" *ngIf="filesFor(slot.type).length > 0">
+          <li *ngFor="let doc of filesFor(slot.type)" class="doc-file">
+            <img
+              *ngIf="previewFor(doc)"
+              class="doc-thumb"
+              [src]="previewFor(doc)"
+              [alt]="('documents.previewAlt' | translate) + ' ' + doc.file.name"
+            />
+            <span *ngIf="!previewFor(doc)" class="doc-file-ico" aria-hidden="true">📄</span>
+            <span class="doc-file-name" [title]="doc.file.name">{{ doc.file.name }}</span>
+            <span class="doc-file-size">{{ formatSize(doc.file.size) }}</span>
+            <button
+              type="button"
+              class="doc-remove"
+              (click)="remove(slot.type, doc.file.name)"
+              [attr.aria-label]="('documents.removeFile' | translate) + ' ' + doc.file.name"
+            >✕</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div *ngIf="canContinue" class="doc-ready" role="status">
+      ✓ {{ 'documents.ready' | translate }}
+    </div>
+
+    <div class="btn-row">
+      <button
+        type="button"
+        class="btn-big btn-primary btn-continue"
+        [disabled]="!canContinue"
+        (click)="continue()"
+      >{{ 'documents.continue' | translate }} →</button>
+      <button type="button" class="btn-big btn-back btn-skip" (click)="skip()">
+        {{ 'documents.skip' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

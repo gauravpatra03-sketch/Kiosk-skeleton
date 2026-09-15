@@ -1,9 +1,9 @@
 <div class="kiosk-screen">
   <div class="kiosk-card">
-    <button type="button" class="btn-big btn-back btn-back-top" (click)="back()">← Back</button>
+    <button type="button" class="btn-big btn-back btn-back-top" (click)="back()">← {{ 'common.back' | translate }}</button>
 
-    <h1 class="kiosk-title">Which clinic do you need?</h1>
-    <p class="kiosk-sub">Please tap one of the options below.</p>
+    <h1 class="kiosk-title">{{ 'department.title' | translate }}</h1>
+    <p class="kiosk-sub">{{ 'department.subtitle' | translate }}</p>
 
     <div class="dept-grid">
       <button
@@ -13,8 +13,8 @@
         (click)="choose(department)"
       >
         <span class="dept-icon" aria-hidden="true">{{ department.icon }}</span>
-        <span class="dept-name">{{ department.name }}</span>
-        <span class="dept-blurb">{{ department.blurb }}</span>
+        <span class="dept-name">{{ ('dept.' + department.id + '.name') | translate }}</span>
+        <span class="dept-blurb">{{ ('dept.' + department.id + '.blurb') | translate }}</span>
       </button>
     </div>
   </div>

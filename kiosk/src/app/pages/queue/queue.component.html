@@ -1,25 +1,54 @@
 <div class="kiosk-screen">
-  <div class="kiosk-card">
+    <!-- Normal ticket screen -->
+  <div *ngIf="!needsRestart" class="kiosk-card">
     <div class="ticket">
-      <span class="ticket-label">Your queue number</span>
+      <span class="ticket-label">{{ 'queue.ticketLabel' | translate }}</span>
       <div class="ticket-num">{{ ticket || '...' }}</div>
 
       <div *ngIf="name" class="ticket-summary">
-        <span><span class="ticket-key">Name:</span> {{ name }}</span>
-        <span><span class="ticket-key">Clinic:</span> {{ department }}</span>
+        <span><span class="ticket-key">{{ 'queue.nameKey' | translate }}</span> {{ name }}</span>
+        <span><span class="ticket-key">{{ 'queue.clinicKey' | translate }}</span> {{ department }}</span>
       </div>
 
       <p class="kiosk-sub ticket-note">
-        Please take a seat and keep an eye on the screen. We will call your number soon.
+        {{ 'queue.note' | translate }}
       </p>
 
       <button type="button" class="btn-big btn-primary btn-print" (click)="printTicket()">
-        🖨️ Print your ticket
+        🖨️ {{ 'queue.printReceipt' | translate }}
       </button>
     </div>
 
     <div class="btn-row">
-      <button type="button" class="btn-big btn-green" (click)="done()">✓ I am done</button>
+      <button type="button" class="btn-big btn-green" (click)="done()">✓ {{ 'queue.done' | translate }}</button>
     </div>
+  </div>
+
+  <!-- Helpful message when the session was lost (refresh / direct visit) -->
+  <div *ngIf="needsRestart" class="kiosk-card">
+    <div class="restart-ico" aria-hidden="true">⏱️</div>
+    <h1 class="kiosk-title">{{ 'session.title' | translate }}</h1>
+    <p class="kiosk-sub">
+      {{ 'session.subtitle' | translate }}
+    </p>
+    <button type="button" class="btn-big btn-primary btn-restart" (click)="startOver()">
+      {{ 'session.startOver' | translate }} →
+    </button>
+  </div>
+
+  <!-- Print-only receipt (hidden on screen, printed on paper) -->
+  <div class="print-receipt" *ngIf="!needsRestart && ticket">
+    <div class="rec-clinic">{{ 'receipt.brand' | translate }}</div>
+    <div class="rec-sub">{{ 'receipt.sub' | translate }}</div>
+    <div class="rec-rule"></div>
+    <div class="rec-label">{{ 'receipt.queueLabel' | translate }}</div>
+    <div class="rec-num">{{ ticket }}</div>
+    <div class="rec-rule"></div>
+    <div class="rec-row"><span>{{ 'receipt.patient' | translate }}</span><span>{{ name || '—' }}</span></div>
+    <div class="rec-row"><span>{{ 'receipt.clinic' | translate }}</span><span>{{ department || '—' }}</span></div>
+    <div class="rec-row"><span>{{ 'receipt.time' | translate }}</span><span>{{ nowLabel }}</span></div>
+    <div class="rec-rule"></div>
+    <div class="rec-barcode" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="rec-foot">{{ 'receipt.foot' | translate }}</div>
   </div>
 </div>

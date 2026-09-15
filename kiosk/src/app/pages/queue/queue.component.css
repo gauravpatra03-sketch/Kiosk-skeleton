@@ -42,3 +42,97 @@
 .btn-print {
   width: 100%;
 }
+
+/* ------------------------------------------------------------------
+   Session-lost restart screen
+   ------------------------------------------------------------------ */
+.restart-ico {
+  font-size: var(--mega);
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.btn-restart {
+  min-width: 320px;
+}
+
+/* ------------------------------------------------------------------
+   Print receipt — hidden on screen, printed on paper.
+   ------------------------------------------------------------------ */
+.print-receipt {
+  display: none;
+  width: 80mm;
+  background: #fff;
+  color: #000;
+  font-family: 'Courier New', 'Segoe UI', monospace;
+  padding: 6mm;
+  text-align: center;
+}
+
+.rec-clinic {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.rec-sub {
+  font-size: 11px;
+  color: #333;
+  margin: 1mm 0 0;
+}
+
+.rec-rule {
+  border-top: 1px dashed #000;
+  margin: 3mm 0;
+}
+
+.rec-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #333;
+}
+
+.rec-num {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  line-height: 1.2;
+}
+
+.rec-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  padding: 1mm 0;
+}
+
+.rec-barcode {
+  display: flex;
+  justify-content: center;
+  gap: 1.5px;
+  margin: 2mm 0;
+}
+
+.rec-barcode span {
+  width: 2px;
+  height: 14px;
+  background: #000;
+}
+.rec-barcode span:nth-child(2n) { width: 1px; }
+.rec-barcode span:nth-child(3n) { width: 3px; }
+.rec-barcode span:nth-child(4n) { height: 10px; }
+.rec-barcode span:nth-child(5n) { height: 16px; }
+
+.rec-foot {
+  font-size: 11px;
+  color: #333;
+  margin-top: 1mm;
+}
+
+/* ------------------------------------------------------------------
+   Printing — only the receipt is shown.
+   ------------------------------------------------------------------ */
+@media print {
+  .print-receipt { display: block; }
+}
