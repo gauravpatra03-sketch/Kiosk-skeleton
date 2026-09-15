@@ -1,0 +1,3 @@
+# Netlify SPA fallback: any route not matching a real file goes to index.html.
+# This makes client-side routes (e.g. /queue) work on direct visits / refresh.
+/* /index.html 200

@@ -25,3 +25,21 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Deployment — Netlify
+
+The Angular app is in the `kiosk` subfolder, so set Netlify's build settings to run
+there and serve the SPA:
+
+| Setting | Value |
+| --- | --- |
+| Base directory | `kiosk` |
+| Build command | `npm run build` |
+| Publish directory | `dist/kiosk` |
+
+- `kiosk/.nvmrc` pins Node 18 (Angular 15's supported line).
+- `kiosk/src/_redirects` (copied into the build output) routes all SPA paths to
+  `index.html` so direct visits/refreshes on routes like `/queue` work.
+- Deploy from the `master` branch; the site is served at `https://kiosk-skeleton.netlify.app`.
+
+Commit `kiosk/angular.json`, `kiosk/src/_redirects`, and `kiosk/.nvmrc` changes, then
+re-deploy from Netlify (or push to `master` to trigger a new deploy).
