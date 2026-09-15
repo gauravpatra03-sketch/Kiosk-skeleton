@@ -1,0 +1,19 @@
+# --- Node / Angular ---
+node_modules/
+dist/
+.angular/
+*.log
+
+# --- Environment / secrets ---
+.env
+.env.local
+.env.*.local
+*.pem
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Editors ---
+.idea/
+*.suo

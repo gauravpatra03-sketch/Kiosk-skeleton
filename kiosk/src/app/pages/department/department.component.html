@@ -1,0 +1,21 @@
+<div class="kiosk-screen">
+  <div class="kiosk-card">
+    <button type="button" class="btn-big btn-back btn-back-top" (click)="back()">← Back</button>
+
+    <h1 class="kiosk-title">Which clinic do you need?</h1>
+    <p class="kiosk-sub">Please tap one of the options below.</p>
+
+    <div class="dept-grid">
+      <button
+        type="button"
+        class="dept-btn"
+        *ngFor="let department of departments"
+        (click)="choose(department)"
+      >
+        <span class="dept-icon" aria-hidden="true">{{ department.icon }}</span>
+        <span class="dept-name">{{ department.name }}</span>
+        <span class="dept-blurb">{{ department.blurb }}</span>
+      </button>
+    </div>
+  </div>
+</div>

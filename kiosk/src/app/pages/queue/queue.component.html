@@ -1,0 +1,25 @@
+<div class="kiosk-screen">
+  <div class="kiosk-card">
+    <div class="ticket">
+      <span class="ticket-label">Your queue number</span>
+      <div class="ticket-num">{{ ticket || '...' }}</div>
+
+      <div *ngIf="name" class="ticket-summary">
+        <span><span class="ticket-key">Name:</span> {{ name }}</span>
+        <span><span class="ticket-key">Clinic:</span> {{ department }}</span>
+      </div>
+
+      <p class="kiosk-sub ticket-note">
+        Please take a seat and keep an eye on the screen. We will call your number soon.
+      </p>
+
+      <button type="button" class="btn-big btn-primary btn-print" (click)="printTicket()">
+        🖨️ Print your ticket
+      </button>
+    </div>
+
+    <div class="btn-row">
+      <button type="button" class="btn-big btn-green" (click)="done()">✓ I am done</button>
+    </div>
+  </div>
+</div>

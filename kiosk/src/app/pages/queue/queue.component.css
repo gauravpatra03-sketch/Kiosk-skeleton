@@ -1,0 +1,44 @@
+.ticket {
+  background: linear-gradient(160deg, #d9f4dc, #b7e4c7);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: inset 0 0 0 4px #ffffff, 0 9px 0 #8fc9a3;
+}
+
+.ticket-label {
+  font-size: var(--big);
+  font-weight: 600;
+  color: var(--teal-dark);
+}
+
+.ticket-num {
+  font-size: var(--gigantic);
+  font-weight: 800;
+  color: var(--teal-dark);
+  letter-spacing: 6px;
+  line-height: 1.1;
+  margin: 12px 0;
+}
+
+.ticket-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: var(--big);
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.ticket-key {
+  color: var(--teal-dark);
+  font-weight: 700;
+}
+
+.ticket-note {
+  margin: 14px 0 24px;
+}
+
+.btn-print {
+  width: 100%;
+}

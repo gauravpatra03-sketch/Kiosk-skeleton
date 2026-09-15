@@ -1,0 +1,53 @@
+.kiosk-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 40px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--white);
+}
+
+.brand-dot {
+  width: 22px;
+  height: 22px;
+  background: var(--amber);
+  border-radius: 50%;
+  box-shadow: 0 0 0 9px rgba(255, 183, 3, 0.25);
+}
+
+.brand-name {
+  margin: 0;
+  font-size: var(--big);
+  font-weight: 700;
+}
+
+.brand-tag {
+  margin: 0;
+  font-size: 18px;
+  color: #bfd9df;
+}
+
+.btn-home {
+  font-size: var(--big);
+  font-weight: 700;
+  color: var(--white);
+  background: transparent;
+  border: 3px solid #6aa0aa;
+  border-radius: 16px;
+  padding: 10px 26px;
+  cursor: pointer;
+  min-height: 62px;
+}
+.btn-home:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.kiosk-main {
+  padding: 8px 20px 40px;
+}

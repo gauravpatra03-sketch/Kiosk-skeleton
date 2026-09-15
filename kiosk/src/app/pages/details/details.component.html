@@ -1,0 +1,45 @@
+<div class="kiosk-screen">
+  <div class="kiosk-card">
+    <button type="button" class="btn-big btn-back btn-back-top" (click)="back()">← Back</button>
+
+    <h1 class="kiosk-title">Your details</h1>
+    <p class="kiosk-sub">Please enter your name and mobile number below.</p>
+
+    <form (ngSubmit)="next()">
+      <div class="field">
+        <label for="name">Your full name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          [(ngModel)]="name"
+          autocomplete="name"
+          placeholder="Type your name here"
+          required
+        />
+      </div>
+
+      <div class="field">
+        <label for="phone">Mobile number (10 digits)</label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          inputmode="numeric"
+          [(ngModel)]="phone"
+          (input)="onPhoneInput()"
+          autocomplete="tel"
+          placeholder="e.g. 9876543210"
+          maxlength="10"
+          required
+        />
+      </div>
+
+      <p *ngIf="hasInputError()" class="form-error">
+        Please enter your name and a 10-digit mobile number.
+      </p>
+
+      <button type="submit" class="btn-big btn-primary btn-submit">Next →</button>
+    </form>
+  </div>
+</div>

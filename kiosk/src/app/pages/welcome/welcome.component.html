@@ -1,0 +1,22 @@
+<div class="kiosk-screen">
+  <div class="kiosk-card">
+    <div class="welcome-top">
+      <span class="welcome-date">{{ todayLabel }}</span>
+      <span class="welcome-clock">{{ clock }}</span>
+    </div>
+
+    <div class="welcome-icon" aria-hidden="true">🏥</div>
+    <h1 class="kiosk-title">Welcome</h1>
+    <p class="kiosk-sub">
+      Tap the big button below to check in. It only takes about a minute.
+    </p>
+
+    <button type="button" class="btn-big btn-start" (click)="start()">
+      ▶ &nbsp; Tap here to begin
+    </button>
+
+    <p class="hint welcome-help">
+      Need help? Just ask a member of our staff — we are happy to assist you.
+    </p>
+  </div>
+</div>

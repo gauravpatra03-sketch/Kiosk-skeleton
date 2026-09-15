@@ -1,0 +1,35 @@
+.welcome-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--big);
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.welcome-date {
+  font-weight: 600;
+}
+
+.welcome-clock {
+  font-size: var(--huge);
+  font-weight: 700;
+  color: var(--teal-dark);
+}
+
+.welcome-icon {
+  font-size: var(--gigantic);
+  line-height: 1;
+  margin: 6px 0 18px;
+}
+
+.btn-start {
+  width: 100%;
+  font-size: var(--huge);
+  min-height: 150px;
+  margin: 6px 0 28px;
+}
+
+.welcome-help {
+  margin-top: 6px;
+}
